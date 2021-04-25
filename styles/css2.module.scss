@@ -1,0 +1,487 @@
+$color1: #f4f4f4;
+$color2: #e04b55;
+$color3: #ff436c;
+$color4: #32a5c2;
+$color5: #ffa52f;
+$btncolor: #f06c00;
+
+$primary: #1266f1;
+$secondary: #b23cfd;
+$success: #00b74a;
+$danger: #f93154;
+$Warning: #ffa900;
+$info: #39c0ed;
+$light: #fbfbfb;
+$dark: #262626;
+
+.display {
+  user-select: none;
+  display: grid;
+  grid-template-columns: 350px auto;
+  grid-template-rows: 70px auto 30px;
+  grid-template-areas:
+    "topbar topbar"
+    "sidebar content"
+    "footer footer";
+  background-color: #f0f2f5;
+  width: 100%;
+}
+.topbar {
+  z-index: 2;
+  display: grid;
+  position: fixed;
+  grid-area: topbar;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  grid-template-areas: "img title menu";
+  grid-template-columns: 100px auto 250px;
+  width: 100%;
+}
+
+.topbar_img {
+  grid-area: img;
+  border-radius: 50%;
+  margin-left: 27px;
+  margin-top: 2.5px;
+  cursor: pointer;
+}
+.topbar_title {
+  grid-area: title;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 70px;
+  color: #493a3d;
+  text-indent: 1.5em;
+  min-width: 1550px;
+}
+
+.sidebar {
+  position: sticky;
+  background-color: #f0f2f5;
+  top: 85px;
+}
+
+.sidebar a {
+  display: block;
+  background-color: #f0f2f5;
+  width: 350px;
+  padding: 15px;
+  color: #423034;
+  border-radius: 10px;
+  font-weight: bold;
+  text-indent: 1.5em;
+  font-size: 20px;
+  height: 60px;
+}
+.sidebar_icon {
+  position: absolute;
+}
+.sidebar_text {
+  position: absolute;
+  margin-left: 40px;
+  margin-top: 1px;
+}
+.sidebar a:hover {
+  background-color: #e4e6e8;
+  cursor: pointer;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #ffffff;
+}
+/*------------------------------------------------------------------------*/
+.content {
+  grid-area: content;
+  margin-top: 15px;
+  margin-left: 100px;
+  background-color: #f0f2f5;
+}
+.content_project {
+  display: grid;
+  background-color: #f0f2f5;
+  min-height: calc(100vh - 100px);
+  grid-template-rows: 620px auto auto;
+  grid-template-columns: 1200px;
+  grid-template-areas:
+    "status"
+    "projectinfo"
+    "process";
+}
+
+.process_box {
+  margin-top: 20px;
+  background-color: white;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+}
+
+.content_status {
+  display: grid;
+  grid-area: status;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+  margin-bottom: 15px;
+  grid-template-areas: "title" "progress" "substatus";
+  grid-template-rows: 70px 200px auto;
+}
+.content_status_title {
+  grid-area: title;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: $color2;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  width: 300px;
+  height: 60px;
+  line-height: 40px;
+  font-size: 20px;
+  margin-left: -40px;
+  margin-top: -5px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+}
+/* ----------------------progressbar----------------------------------------*/
+.progressbar {
+  margin-top: 50px;
+  grid-area: progress;
+  border-radius: 10px;
+  height: 100px;
+  align-items: center;
+}
+.progressbar li {
+  list-style-type: none;
+  float: left;
+  width: 20%;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(133, 133, 133);
+}
+
+.progressbar li::before {
+  content: " ";
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: solid gainsboro;
+  display: block;
+  text-align: center;
+  background-color: white;
+  margin: 0 auto 10px auto;
+  position: relative;
+  z-index: 1;
+}
+.progressbar li::after {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: gainsboro;
+  top: 17px;
+  left: -130px;
+}
+
+.progressbar li:first-child::after {
+  content: none;
+}
+.progressbar li.active {
+  color: $color2;
+}
+.progressbar li.active::before {
+  border: solid $color2;
+  background-color: $color3;
+}
+.progressbar li.active + li::after {
+  background: linear-gradient(to right, $color2, $color3, $Warning);
+}
+.progressbar li.now::before {
+  border: solid $Warning;
+}
+.progressbar li.now {
+  color: $Warning;
+}
+/* ----------------------progressbar----------------------------------------*/
+/* ----------------------substatus----------------------------------------*/
+.substatus {
+  grid-area: substatus;
+  display: grid;
+  grid-template-areas: "logbook manage";
+  grid-template-columns: 50% 50%;
+  height: 310px;
+}
+.logbook {
+  display: grid;
+  grid-template-areas: "log_title" "log_content";
+  grid-template-rows: 60px 70px;
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px;
+  border: solid #f0f2f5 2px;
+  height: 200x;
+}
+.logbook_bar {
+  margin-bottom: -15px;
+  margin-left: -10px;
+}
+.logbook_bar li {
+  list-style-type: none;
+  float: left;
+  width: 45px;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  color: rgb(133, 133, 133);
+}
+
+.logbook_bar li::before {
+  content: " ";
+  width: 40px;
+  height: 20px;
+  border-radius: 10%;
+  display: block;
+  text-align: center;
+  background-color: #f0f2f5;
+  border: solid $color2 2px;
+  margin: 0px 10px 0px 30px;
+  position: relative;
+}
+.logbook_bar li.complete::before {
+  background-color: $color3;
+}
+.logbooktitle {
+  grid-area: log_title;
+  line-height: 55px;
+  background-color: $color2;
+  color: white;
+  text-indent: 1.5em;
+  height: 60px;
+  border-radius: 10px 10px 5px 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.logbook_content {
+  margin-top: 10px;
+  text-indent: 1.5em;
+  color: #493a3d;
+  font-size: 18px;
+}
+
+.logbook button {
+  display: block;
+  font-weight: bold;
+  border: none;
+  margin-bottom: -50px;
+  margin-left: 20px;
+  padding: 2px;
+  width: 200px;
+  background-color: $btncolor;
+  border-radius: 50px;
+  color: white;
+  font-size: 18px;
+  outline: none;
+  height: 60px;
+}
+
+.logbook button:hover {
+  cursor: pointer;
+  background-color: $color5;
+}
+.process_manage {
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-template-areas: "pm_title" "pm_body" "pm_btn";
+  border-radius: 10px;
+  background-color: white;
+  margin: 10px;
+  text-indent: 1.5em;
+  border: solid #f0f2f5 2px;
+  height: 200x;
+}
+
+.process_manage_title {
+  grid-area: pm_title;
+  line-height: 55px;
+  background-color: $color2;
+  color: white;
+  text-indent: 1.5em;
+  height: 60px;
+  border-radius: 10px 10px 5px 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.process_manage_body {
+  margin-top: -5px;
+  grid-area: pm_body;
+  font-weight: bold;
+  color: #493a3d;
+}
+.process_manage_body label {
+  color: $success;
+  margin-left: 20px;
+}
+
+.process_manage_body p {
+  margin: 0;
+}
+.process_manage_body p.status {
+  text-indent: 10em;
+  margin: 0;
+  color: #008d23;
+}
+.process_manage_body p.wait {
+  margin: 0;
+  color: red;
+  text-indent: 10em;
+}
+
+.process_manage button {
+  grid-area: pm_btn;
+  display: block;
+  font-weight: bold;
+  border: none;
+  margin-top: 0px;
+  margin-left: 20px;
+  padding: 2px;
+  width: 200px;
+  height: 60px;
+  background-color: $btncolor;
+  border-radius: 50px;
+  color: white;
+  font-size: 18px;
+  outline: none;
+}
+.process_manage button:hover {
+  cursor: pointer;
+  background-color: $color5;
+}
+/* ----------------------substatus----------------------------------------*/
+.content_project_info {
+  display: grid;
+  grid-template-areas: "about member";
+  grid-template-columns: 50% 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  grid-area: projectinfo;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+  min-width: 600px;
+}
+.project_info_box {
+  display: grid;
+  grid-template-areas: "pi_title" "pi_content";
+  grid-template-rows: auto auto;
+}
+.project_info_title {
+  grid-area: pi_title;
+  line-height: 55px;
+  background-color: $color4;
+  color: white;
+  text-indent: 1.5em;
+  height: 60px;
+  border-radius: 10px 10px 5px 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.content_project_about {
+  grid-area: about;
+  background-color: white;
+  border: solid #f0f2f5 2px;
+  border-radius: 10px;
+  height: auto;
+  margin: 10px;
+  color: #423034;
+  font-weight: bold;
+  text-indent: 1.5em;
+  min-width: 100px;
+}
+.content_project_member {
+  grid-area: member;
+  background-color: white;
+  border: solid #f0f2f5 2px;
+  font-weight: bold;
+  text-indent: 1.5em;
+  border-radius: 10px;
+  height: auto;
+  margin: 10px;
+  min-width: 100px;
+  color: #504346;
+}
+
+/*----------------------------topMenu--------------------------------*/
+.topMenu_box {
+  display: grid;
+  grid-area: menu;
+  grid-template-areas: "name noctic menu";
+  margin-right: 0px;
+}
+.topMenu {
+  cursor: pointer;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #f0f2f5;
+  align-content: center;
+  align-self: center;
+  border-radius: 50px;
+  line-height: 46.5px;
+}
+.topMenu:hover {
+  background-color: #e4e6e8;
+}
+
+.topMenu_content {
+  display: none;
+  position: fixed;
+  background-color: #f0f2f5;
+  min-width: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 5px;
+}
+
+.topMenu_content a {
+  color: #423034;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+  text-indent: 1em;
+  border-bottom: solid 2px white;
+}
+.topMenu_content a p {
+  margin: -5px;
+}
+.topMenu_content a p.head {
+  font-size: 18px;
+}
+
+.topMenu_content a:hover {
+  cursor: pointer;
+  background-color: #ddd;
+}
+.topMenu_name {
+  cursor: pointer;
+  font-weight: bold;
+  align-self: center;
+  width: 150px;
+  border-radius: 50px;
+  height: 40px;
+  align-content: center;
+  align-items: center;
+  line-height: 38.5px;
+  text-indent: 1.2em;
+  background-color: #f0f2f5;
+  margin-top: 16px;
+  color: #423034;
+}
+.topMenu_name:hover {
+  background-color: #e4e6e8;
+}
+
+/*----------------------------Dropdown--------------------------------*/

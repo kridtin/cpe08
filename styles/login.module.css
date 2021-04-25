@@ -1,0 +1,119 @@
+.display {
+  display: grid;
+  margin-left: -1px;
+  grid-template-rows: 70px auto 30px;
+  grid-template-areas:
+    "topbar "
+    "content "
+    "footer ";
+  background-image: url("../public/login_bg.jpg");
+  max-height: calc(100vh);
+}
+.topbar {
+  display: grid;
+  grid-area: topbar;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  grid-template-areas: "img title";
+  grid-template-columns: 100px 600px;
+}
+
+.topbar_img {
+  grid-area: img;
+  border-radius: 50%;
+  margin-left: 27px;
+  margin-top: 2.5px;
+  cursor: pointer;
+}
+.topbar_title {
+  margin-top: -4px;
+  grid-area: title;
+  font-weight: bold;
+  font-size: 22px;
+  color: #493a3d;
+  text-indent: 1.5em;
+  margin-left: 1px;
+}
+.topbar_title p {
+  margin-top: 10px;
+}
+.topbar_title p.university {
+  margin-top: -20px;
+  font-size: 16px;
+  color: #4e4547;
+}
+.footer {
+  grid-area: footer;
+  background-color: black;
+}
+/*------------------------------------------------------------------------*/
+.content {
+  grid-area: content;
+  min-height: calc(100vh - 100px);
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.box {
+  position: fixed;
+  display: grid;
+  text-align: center;
+  align-self: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  width: 500px;
+  height: 650px;
+  grid-template-areas: "Title" "content";
+  grid-template-rows: 300px 300px;
+  margin-left: 35%;
+  margin-top: 60px;
+  color: #424242;
+  font-size: 20px;
+  font-weight: bold;
+  font-size: 24px;
+}
+.box input {
+  text-align: center;
+  border-radius: 10px;
+  width: 450px;
+  height: 40px;
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  margin-bottom: -10px;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.box input:focus::placeholder {
+  color: #f0f2f5;
+}
+.box p {
+  margin-bottom: -5px;
+}
+.box button {
+  text-align: center;
+  border-radius: 10px;
+  width: 450px;
+  height: 50px;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  color: #2c2c2c;
+  background-color: #f0f2f5;
+  margin-top: 80px;
+}
+.box button:hover {
+  cursor: pointer;
+  background-color: #cccbcb;
+}
+.box_title {
+  margin-top: 10px;
+  grid-area: Title;
+}
+.box_content {
+  margin-top: 30px;
+  grid-area: content;
+}

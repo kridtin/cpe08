@@ -1,0 +1,104 @@
+$color1: #f4f4f4;
+$color2: #e04b55;
+$color3: #ff436c;
+$color4: #32a5c2;
+$color5: #ffa52f;
+$btncolor: #f06c00;
+$primary: #1266f1;
+$secondary: #b23cfd;
+$success: #00b74a;
+$danger: #f93154;
+$Warning: #ffa900;
+$info: #39c0ed;
+$light: #fbfbfb;
+$dark: #262626;
+$red: red;
+.content {
+  display: grid;
+  background-color: white;
+  padding: 5px;
+  width: 1200px;
+  grid-template-areas: "title" "body";
+  grid-template-rows: 80px auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.title {
+  grid-area: title;
+  background-color: $success;
+  color: $light;
+  width: 300px;
+  height: 60px;
+  border-radius: 10px;
+  line-height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  margin-left: -45px;
+  margin-top: -5px;
+}
+.body {
+  display: grid;
+  grid-area: body;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  grid-template-areas: "1 2";
+  grid-template-columns: 200px 600px;
+}
+.body p {
+  margin-top: 60px;
+  font-size: 18px;
+}
+.body p.title {
+  font-weight: bold;
+}
+.body input {
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  height: 60px;
+  margin-top: 45px;
+  border-radius: 10px;
+  text-indent: 2em;
+}
+.body textarea {
+  display: block;
+  padding: 10px;
+  resize: none;
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  height: 80px;
+  margin-top: 45px;
+  border-radius: 10px;
+  line-height: 20px;
+}
+.body select {
+  outline: none;
+  border: none;
+  background-color: #f0f2f5;
+  height: 60px;
+  margin-top: 45px;
+  border-radius: 10px;
+  text-indent: 2em;
+}
+.button {
+  height: 40px;
+  border: none;
+  margin-left: 100px;
+  margin-right: 100px;
+  background-color: $danger;
+  color: white;
+  border-radius: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-top: 40px;
+  outline: none;
+}
+.button:hover {
+  background-color: $Warning;
+  cursor: pointer;
+}

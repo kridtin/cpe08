@@ -1,0 +1,134 @@
+$color1: #f4f4f4;
+$color2: #e04b55;
+$color3: #ff436c;
+$color4: #32a5c2;
+$color5: #ffa52f;
+$btncolor: #f06c00;
+
+$primary: #1266f1;
+$secondary: #b23cfd;
+$success: #00b74a;
+$danger: #f93154;
+$Warning: #ffa900;
+$info: #39c0ed;
+$light: #fbfbfb;
+$dark: #262626;
+.content {
+  display: grid;
+  background-color: #f0f2f5;
+  min-height: calc(100vh - 100px);
+  grid-template-rows: 800px auto auto;
+  grid-template-columns: 1200px;
+}
+.main {
+  display: grid;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  border-radius: 10px;
+  margin-top: 20px;
+  grid-template-rows: 80px auto;
+  grid-template-areas: "title" "_info";
+}
+.title {
+  grid-area: title;
+  background-color: $danger;
+  height: 80px;
+  width: 350px;
+  margin-left: -30px;
+  margin-top: -10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 70px;
+}
+.info_box {
+  display: grid;
+  grid-area: _info;
+  grid-template-areas: "picture info";
+  grid-template-columns: 400px auto;
+  background-color: white;
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+.pic_box {
+  display: grid;
+  grid-area: picture;
+  grid-template-areas:
+    "title"
+    "pic";
+  background-color: white;
+  grid-template-rows: 80px auto;
+}
+
+.file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.file + label {
+  cursor: pointer;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: $success;
+  display: inline-block;
+  text-align: center;
+  line-height: 35px;
+  height: 40px;
+  width: 300px;
+  margin-left: 50px;
+  margin-top: -10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+
+.file + label:hover {
+  background-color: red;
+}
+
+.pic {
+  grid-area: pic;
+  height: 400px;
+  width: 300px;
+  margin-top: 30px;
+  margin-left: 50px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+
+.info {
+  display: grid;
+  grid-area: info;
+  grid-template-areas:
+    "title"
+    "data";
+  background-color: #f0f2f5;
+  grid-template-rows: 80px auto;
+}
+.textbox {
+  grid-area: data;
+  text-indent: 2em;
+  margin-top: 10px;
+}
+.textbox label {
+  text-indent: 2em;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.title2 {
+  grid-area: title;
+  background-color: $primary;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 70px;
+  text-indent: 2em;
+}

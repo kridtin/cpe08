@@ -1,0 +1,409 @@
+$color1: #f4f4f4;
+$color2: #e04b55;
+$color3: #ff436c;
+$color4: #32a5c2;
+$color5: #ffa52f;
+$btncolor: #f06c00;
+
+$primary: #1266f1;
+$secondary: #b23cfd;
+$success: #00b74a;
+$danger: #f93154;
+$Warning: #ffa900;
+$info: #39c0ed;
+$light: #fbfbfb;
+$dark: #262626;
+$ldark: #b3aeae;
+$text: #494949;
+$border: #e2e2e2;
+
+.main {
+  background-color: white;
+  min-height: calc(100vh - 100px);
+  grid-template-areas: "head" "projectList";
+  grid-template-rows: auto auto;
+  margin-top: 20px;
+  width: 1200px;
+  border-radius: 10px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+  margin-bottom: 20px;
+}
+.header {
+  grid-area: head;
+  height: 80px;
+  border-radius: 10px;
+}
+.title {
+  margin-left: -40px;
+  margin-top: -20px;
+  height: 60px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: $danger;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+}
+.title_table {
+  height: 60px;
+  border-radius: 10px;
+  background-color: $color2;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+}
+.title_table_green {
+  height: 60px;
+  border-radius: 10px;
+  background-color: $success;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px;
+}
+.project_list {
+  display: grid;
+  grid-area: projectList;
+  margin-top: 40px;
+  margin-left: 100px;
+  width: 1000px;
+  box-shadow: #00000038 1.95px 1.95px 1.95px 1.95px;
+  border-radius: 10px;
+}
+.project_title {
+  display: grid;
+  height: 70px;
+  grid-template-areas: "i name stat";
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  grid-template-columns: 100px auto 250px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: solid 1px $border;
+  padding: 5px;
+  color: $text;
+}
+.project {
+  display: grid;
+  height: 70px;
+  grid-template-areas: "i name stat";
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  grid-template-columns: 100px auto 250px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: solid 1px $border;
+  padding: 5px;
+  color: $text;
+}
+
+.project:hover {
+  cursor: pointer;
+  border: solid 0.5px $success;
+  color: $success;
+}
+.project_i {
+  grid-area: i;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 55px;
+  background-color: #f0f2f5;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.project_i_title {
+  grid-area: i;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 58px;
+  background-color: $Warning;
+  color: white;
+  font-size: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.project_name {
+  grid-area: name;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+  margin-left: 10px;
+  text-indent: 2em;
+  font-size: 20px;
+  line-height: 50px;
+}
+.project_name_title {
+  grid-area: name;
+  background-color: $primary;
+  border-radius: 10px;
+  margin-left: 10px;
+  text-indent: 2em;
+  color: white;
+  font-size: 20px;
+  line-height: 55px;
+}
+.project_stat {
+  grid-area: stat;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+  margin-left: 10px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+}
+.project_stat_title {
+  grid-area: stat;
+  background-color: $success;
+  border-radius: 10px;
+  margin-left: 10px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  line-height: 55px;
+}
+/*===================================================================*/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.modal2 {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal_content {
+  border-radius: 10px;
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  height: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.modal_content_big {
+  border-radius: 10px;
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  height: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 1200px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  height: 30px;
+  width: 30px;
+  margin-top: -40px;
+  margin-left: 430px;
+}
+
+.close:hover,
+.close:focus {
+  color: $border;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal_header {
+  border-radius: 5px;
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+  text-align: center;
+  background-color: $danger;
+  height: 50px;
+  line-height: 10px;
+  margin-bottom: 20px;
+}
+.modal_body_c {
+  margin-right: 30px;
+  margin-left: 30px;
+  padding: 2px 16px;
+  text-align: center;
+}
+.modal_body_c p {
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: 120px auto;
+  width: 100px;
+  font-weight: bold;
+  color: #464545;
+  margin-left: 40px;
+}
+.modal_body_c input {
+  grid-area: right;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  height: 40px;
+  background-color: #f0f2f5;
+  text-indent: 1em;
+  border-radius: 10px;
+  width: 200px;
+}
+.modal_body_c img {
+  margin-bottom: 20px;
+}
+.modal_body_c label {
+  grid-area: left;
+  font-size: 20px;
+  margin-left: 0px;
+  width: 250px;
+}
+
+.modal_body_c button {
+  outline: none;
+  border: none;
+  background-color: $Warning;
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.modal_body_c button:hover {
+  cursor: pointer;
+  background-color: rgb(253, 198, 78);
+}
+.modal_body {
+  margin-right: 30px;
+  margin-left: 30px;
+  padding: 2px 16px;
+}
+.modal_body p {
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: 120px auto;
+  width: 100px;
+  font-weight: bold;
+  color: #464545;
+  margin-left: 40px;
+}
+.modal_body input {
+  grid-area: right;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  height: 40px;
+  background-color: #f0f2f5;
+  text-indent: 1em;
+  border-radius: 10px;
+  width: 200px;
+}
+.modal_body img {
+  margin-bottom: 20px;
+}
+.modal_body label {
+  grid-area: left;
+  font-size: 20px;
+  margin-left: 0px;
+  width: 250px;
+}
+
+.modal_body button {
+  outline: none;
+  border: none;
+  background-color: $Warning;
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.modal_body button:hover {
+  cursor: pointer;
+  background-color: rgb(253, 198, 78);
+}
+
+.modal_footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
