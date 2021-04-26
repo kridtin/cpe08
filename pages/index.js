@@ -94,7 +94,7 @@ export default function Home() {
     name: "ProjectX",
     descript: "----",
     teacher: "Teacher ABC",
-    state: 3,
+    state: 5,
     statename: "บันทึกผลสอบ",
     request: "",
     logbook: 11,
@@ -115,7 +115,7 @@ export default function Home() {
     // ส่งmemID ไปที่่เก็บข้อมูลอาจารย์ รับresponseกลับมาเป็น response = {id:xxxxxxxx,name:"{thname} {thlastname}"}
     //Committee.push(response)
   }
-
+  //==========================test data===================================//
   const Member = [
     { id: "0001", name: "std1name" },
     { id: "0001", name: "std2name" },
@@ -167,9 +167,9 @@ export default function Home() {
   } else if (project.state == 3) {
     stateContent = <Testing state={project.state} />; //กำลังสอบ
   } else if (project.state == 4) {
-    stateContent = <Examresult state={4} />; //บันทึกผลสอบกำหนดเลขstate เพื่อบอกdatabaseว่าเป็นผลสอบหัวข้อ
+    stateContent = <Examresult user={user} state={4} />; //บันทึกผลสอบกำหนดเลขstate เพื่อบอกdatabaseว่าเป็นผลสอบหัวข้อ
   } else if (project.state == 5) {
-    stateContent = <Confirm state={5} conf={1} />; //รอ อาจารย์ยืนยัน
+    stateContent = <Confirm user={user} state={5} conf={0} />; //รอ อาจารย์ยืนยัน
   } else if (project.state == 6) {
     stateContent = <Asses />; //ขอให้อาจารย์ประเมินความคืบหน้า
   } else if (project.state == 7) {

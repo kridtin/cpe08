@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "../styles/es.module.scss";
 
 export default function examresult(props) {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(props.user);
 
   var c_result0 = "";
   var c_result1 = "";
@@ -25,9 +25,9 @@ export default function examresult(props) {
     c_tComment = tComment;
     c_c1Comment = c1Comment;
     c_c2Comment = c2Comment;
-    window.alert(state);
 
     //ส่งไปบันทึกdatabase
+    //update state +1
     // state มี 2 state คือ 4(ผลสอบหัวข้อ) กับ 10(ผลสอบจบ)
     // c_result0 = ผลสอบ อ.ที่ปรึกษา
     // c_result1 = ผลสอบ อ.กรรมการ1

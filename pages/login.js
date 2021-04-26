@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../styles/login.module.css";
 import Head from "next/head";
-import user from "./use_student";
 
 export default function login() {
   const router = useRouter();

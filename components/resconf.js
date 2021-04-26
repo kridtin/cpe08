@@ -3,11 +3,16 @@ import styles from "../styles/waiting.module.scss";
 import Close from "../public/close.svg";
 
 export default function resconf(props) {
+  /*ต้องมีดาต้าเบส เก็บสถานะการรอการยืนยันไว้ [id,userid(รหัสนิสิต),conf(สถะนะการรอการยืนยัน int0/1)] */
+  var userID = props.user.id; //user ID เอาไว้คิวรี่หา สถานะการรอการยืนยัน
+  //คิวรี่มาเป็น response 0หรือ 1 เก็บไว้ในตัวแปร conf
+  var conf = 1;
+
   function updateState() {
     var state = props.state + 1;
     // นำ state ไป query update update state ใน data base
     // รีหน้าเว็บใหม่
-    window.location.href = "/";
+    window.location.href = "/"; //รีเฟรชหน้า
   }
 
   if (props.state == 5) {
@@ -20,7 +25,7 @@ export default function resconf(props) {
     var nextState = "จบ";
   }
 
-  if (props.conf == "0") {
+  if (conf == "0") {
     var text = "กำลังรอการยืนยัน";
     var c = "0";
     if (process.browser) {
