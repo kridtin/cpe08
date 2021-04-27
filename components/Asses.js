@@ -2,7 +2,10 @@ import React from "react";
 import styles from "../styles/waiting.module.scss";
 import Close from "../public/close.svg";
 
-export default function Asses() {
+export default function Asses(props) {
+  var user = props.user;
+  var project = props.project;
+
   function modalOn() {
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
@@ -10,6 +13,10 @@ export default function Asses() {
   function modalOff() {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
+  }
+
+  function sendAsses() {
+    window.location.href = "/";
   }
   return (
     <div className={styles.waiting}>
@@ -36,9 +43,18 @@ export default function Asses() {
           </div>
           <div className={styles.modal_body}>
             <p>
-              <label>body</label>
+              <label>ชื่อโครงงาน</label>
             </p>
-            <button>ยืนยันการส่ง</button>
+            <p>
+              <label>รหัสโครงงาน</label>
+            </p>
+            <p>
+              <label>อาจารย์ที่ปรึกษา</label>
+            </p>
+            <p>
+              <label>สมาชิก</label>
+            </p>
+            <button onClick={sendAsses}>ยืนยันการส่ง</button>
           </div>
         </div>
       </div>

@@ -94,7 +94,7 @@ export default function Home() {
     name: "ProjectX",
     descript: "----",
     teacher: "Teacher ABC",
-    state: 5,
+    state: 10,
     statename: "บันทึกผลสอบ",
     request: "",
     logbook: 11,
@@ -171,9 +171,9 @@ export default function Home() {
   } else if (project.state == 5) {
     stateContent = <Confirm user={user} state={5} conf={0} />; //รอ อาจารย์ยืนยัน
   } else if (project.state == 6) {
-    stateContent = <Asses />; //ขอให้อาจารย์ประเมินความคืบหน้า
+    stateContent = <Asses project={project} user={user} />; //ขอให้อาจารย์ประเมินความคืบหน้า
   } else if (project.state == 7) {
-    stateContent = <Confirm state={7} conf={1} />; //รออาจารย์ประเมิน
+    stateContent = <Confirm user={user} state={7} conf={1} />; //รออาจารย์ประเมิน
   } else if (project.state == 8) {
     stateContent = (
       <ReqExam
@@ -189,9 +189,11 @@ export default function Home() {
   } else if (project.state == 10) {
     stateContent = <Examresult state={10} />; //บันทึกผลสอบ กำหนดเลขstate เพื่อบอกdatabaseว่าเป็นผลสอบจบ
   } else if (project.state == 11) {
-    stateContent = <Confirm state={11} conf="1" />; //รอ อาจารย์ยืนยัน
+    stateContent = <Confirm user={user} state={11} conf="1" />; //รอ อาจารย์ยืนยัน
   } else if (project.state == 12) {
-    stateContent = <Book />; //ส่งรูปเล่ม
+    stateContent = (
+      <Book project={project} member={Member} topic="ส่งเล่มโครงงาน" />
+    ); //ส่งรูปเล่ม
   } else if (project.state == 13) {
     stateContent = <Confirm state={13} conf="1" />; //รออาจารย์ยืนยัน
   } else if (project.state == 14) {
