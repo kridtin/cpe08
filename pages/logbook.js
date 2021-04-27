@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../components/Layout";
+import styles from "../styles/logbook.module.scss";
 
 export default function logbook() {
   React.useEffect(() => {
@@ -37,20 +38,20 @@ export default function logbook() {
 
   return (
     <Layout user={{ username: user.thname, role: "" }}>
-      <div className="logbook">
-        <div className="header">แบบฟอร์มบันทึกความก้าวหน้า</div>
+      <div className={styles.body}>
+        <div className={styles.header}>แบบฟอร์มบันทึกความก้าวหน้า</div>
         <p>วันที่</p>
-        <input id="date" type="date"></input>
+        <input id="date" className={styles.date} type="date"></input>
         <p>สรุปความคืบหน้าของงานที่ได้รับมอบหมาย</p>
-        <input id="conclude" />
+        <textarea id="conclude" />
         <p>ปัญหาที่พบหรือหัวข้อที่เข้ารับคำปรึกษา</p>
-        <input id="topic" />
+        <textarea id="topic" />
         <p>แนวทางการแก้ปัญหา หรือ งานที่ได้รับมอบหมาย</p>
-        <input id="่jobs" />
+        <textarea id="่jobs" />
         <p>ระยะเวลาที่คาดว่าจะใช้สำหรับงานชิ้นนี้</p>
         <input id="time" />
         <p>กำหนดการนัดหมายครั้งต่อไป</p>
-        <input id="nextdate" type="date" />
+        <input id="nextdate" className={styles.date} type="date" />
         <button onClick={sendLogbook}>ส่ง</button>
       </div>
     </Layout>

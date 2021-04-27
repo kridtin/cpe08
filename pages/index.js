@@ -247,7 +247,6 @@ export default function Home() {
   for (let index = 0; index < project.logbook; index++) {
     logbook_style[index] = styles.complete;
   }
-
   return (
     <div>
       <Head>

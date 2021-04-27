@@ -1,0 +1,86 @@
+$color1: #f4f4f4;
+$color2: #e04b55;
+$color3: #ff436c;
+$color4: #32a5c2;
+$color5: #ffa52f;
+$btncolor: #f06c00;
+$text: #5a5a5a;
+$input_text: #494949;
+
+$primary: #1266f1;
+$secondary: #b23cfd;
+$success: #00b74a;
+$danger: #f93154;
+$Warning: #ffa900;
+$info: #39c0ed;
+$light: #fbfbfb;
+$dark: #262626;
+$border: #e2e2e2;
+.body {
+  display: grid;
+  width: 1200px;
+  height: calc(100vh - 40px);
+  background-color: white;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+  border-radius: 5px;
+  padding-left: 100px;
+  padding-right: 100px;
+  font-size: 18px;
+  color: $text;
+}
+.body textarea {
+  resize: none;
+  outline: none;
+  border: solid 1px #e2e2e2;
+  font-size: 18px;
+  text-indent: 10px;
+  color: $input_text;
+  height: 100px;
+}
+.body textarea:hover {
+  border: solid 1px $success;
+  color: $success;
+}
+.body textarea:focus {
+  border: solid 1px $success;
+  color: $success;
+}
+.body input {
+  outline: none;
+  border: solid 1px #e2e2e2;
+  font-size: 18px;
+  text-indent: 10px;
+  color: $input_text;
+}
+.body input:hover {
+  border: solid 1px $success;
+  color: $success;
+}
+.body input:focus {
+  border: solid 1px $success;
+  color: $success;
+}
+.body button {
+  margin-top: 30px;
+  border: none;
+  background-color: $primary;
+  color: white;
+  font-size: 22px;
+  height: 40px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 1.95px 1.95px;
+}
+.body button:hover {
+  cursor: pointer;
+  background-color: $info;
+}
+.body input.date {
+  width: 400px;
+}
+.header {
+  font-size: 26px;
+  font-weight: bold;
+  color: $text;
+}
