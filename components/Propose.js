@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import style from "../styles/propose.module.scss";
 import Axios from "axios";
+import { StepLabel } from "@material-ui/core";
 
 export default function Propose(props) {
   const [user, setUser] = useState(props.user);
   const [MemberList, setMemberList] = useState([]);
+  const [selectdTeacher, setselectdTeacher] = useState([]);
+  const [ShowTeacher, setShowTeacher] = useState([]);
 
   //sendrequest ขอรายชื่อนักเรียนเป็น id:xxxxxxxx name:"{thname} {thlastname}" response =[id:"xxxxxxxx" name:"{thname} {thlastname}"]
   //setStudentList(response)
@@ -47,7 +50,42 @@ export default function Propose(props) {
       }
     }
   }
+  function test(params) {
+    window.alert(params);
+  }
+  const [tRole, settRole] = useState("");
+  function updateTrole(id, role) {
+    settRole("");
+    document.getElementById("btn_t_role1").style = style.select;
+    document.getElementById("btn_t_role2").style = style.select;
+    document.getElementById("btn_t_role3").style = style.select;
+    document.getElementById(id).style.color = "#00b74a";
+    document.getElementById(id).style.border = "solid 2px #00b74a";
+    settRole(role);
+  }
 
+  function addTeacher() {
+    var modal = document.getElementById("tModal");
+    var newMember = document.getElementById("searchTID").value;
+    for (let i = 0; i < teacherList.length; i++) {
+      if (teacherList[i].id == newMember) {
+        var ateacher = {
+          id: teacherList[i].id,
+          name: teacherList[i].name,
+          role: tRole,
+        };
+        setselectdTeacher([...selectdTeacher, ateacher]);
+        modal.style.display = "none";
+        document.getElementById("searchTID").value = "";
+        document.getElementById("btn_t_role1").style = style.select;
+        document.getElementById("btn_t_role2").style = style.select;
+        document.getElementById("btn_t_role3").style = style.select;
+        setShowTeacher([]);
+        settRole("");
+        teacherList.splice(i, 1);
+      }
+    }
+  }
   function getTeacherID(name) {
     for (let i = 0; i < teacherList.length; i++) {
       if (name == teacherList[i].name) {
@@ -67,10 +105,23 @@ export default function Propose(props) {
       }
     }
   }
+  function searchTeacher() {
+    var searchID = document.getElementById("searchTID").value;
+    setShowTeacher([]);
+    for (let i = 0; i < teacherList.length; i++) {
+      if (searchID == teacherList[i].id) {
+        setShowTeacher([...ShowTeacher, teacherList[i]]);
+      }
+    }
+  }
 
   //---------------------modal-----------------------------
   function addMemberOn() {
     var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+  }
+  function addTeacherOn() {
+    var modal = document.getElementById("tModal");
     modal.style.display = "block";
   }
   function addMemberOff() {
@@ -80,8 +131,20 @@ export default function Propose(props) {
   React.useEffect(() => {
     window.onclick = function (event) {
       var modal = document.getElementById("myModal");
+      var tmodal = document.getElementById("tModal");
       if (event.target == modal) {
         modal.style.display = "none";
+        setShowSTD([]);
+        document.getElementById("searchID").value = "";
+      }
+      if (event.target == tmodal) {
+        tmodal.style.display = "none";
+        settRole("");
+        setShowTeacher([]);
+        document.getElementById("searchTID").value = "";
+        document.getElementById("btn_t_role1").style = style.select;
+        document.getElementById("btn_t_role2").style = style.select;
+        document.getElementById("btn_t_role3").style = style.select;
       }
     };
   });
@@ -90,14 +153,10 @@ export default function Propose(props) {
   function sendPopose() {
     var pnameTH = document.getElementById("p_name_th").value; //ชื่อโครงงานไทย
     var pnameEN = document.getElementById("p_name_en").value; //ชื่อโครงงานอังกฤษ
-    var T_name = document.getElementById("teacher").value; //ที่ปรึกษา
-    var sT_name = document.getElementById("subteacher").value; //ที่ปรึกษาร่วม
-    var C_name = document.getElementById("committee").value; //กรรมการ
+    var p_des = document.getElementById("p_des").value; //รายละเอียดโครงงานโดยย่อ
+    var teacher_List = selectdTeacher; //อาจารย์ [{id,name,role},{id,name,role}]
     var userID = user.id; //รหัสนิสิต
     var member = MemberList; //สมาชิก []
-    var T_ID = getTeacherID(T_name); //รหัสที่ปรึกษา
-    var sT_ID = getTeacherID(sT_name); //รหัสที่ปรึกษาร่วม
-    var C_ID = getTeacherID(C_name); //รหัสกรรมการ
     var memberID = []; //รหัสนิสิต สมาชิก []
     memberID.push(userID);
     for (let i = 0; i < member.length; i++) {
@@ -109,9 +168,9 @@ export default function Propose(props) {
       // update state +1 ในDB
       pnameTH: pnameTH, //ชื่อโปรเจ็คภาษาไทย
       pnameEN: pnameEN, //projectname
-      T_ID: T_ID, //รหัสที่ปรึกษา
-      sT_ID: sT_ID, //รหัสที่ปรึกษาร่วม "" ว่างไว้ได้
-      C_ID: C_ID, //รหัสกรรมการ
+      p_des: p_des,
+      tList: teacher_List, ////อาจารย์ [{id,name,role},{id,name,role}]
+
       memberID: memberID, //array
 
       /*ส่งเข้าไปเก็บในตาราง propose น่าจะต้องมี 
@@ -149,48 +208,79 @@ export default function Propose(props) {
           <input id="p_name_th" placeholder="ชื่อโครงงานภาษาไทย..."></input>
           <p>ชื่อโครงงานภาษาอังกฤษ</p>
           <input id="p_name_en" placeholder="ชื่อโครงงานภาษาอังกฤษ..."></input>
-          <p></p>
-          <select
-            id="teacher"
-            name="teacher"
-            autoComplete="off"
-            defaultValue=""
-          >
-            <option value="" disabled selected>
-              อาจารย์ที่ปรึกษา
-            </option>
-            {teacherList.map((val) => {
-              return <option value={val.name}>{val.name}</option>;
-            })}
-          </select>
-          <p></p>
-          <select
-            id="subteacher"
-            name="subteacher"
-            autoComplete="off"
-            defaultValue=""
-          >
-            <option value="" disabled selected>
-              อาจารย์ที่ปรึกษาร่วม
-            </option>
-            {teacherList.map((val) => {
-              return <option value={val.name}>{val.name}</option>;
-            })}
-          </select>
-          <p></p>
-          <select
-            id="committee"
-            name="committee"
-            autoComplete="off"
-            defaultValue=""
-          >
-            <option value="" disabled selected>
-              กรรมการ
-            </option>
-            {teacherList.map((val) => {
-              return <option value={val.name}>{val.name}</option>;
-            })}
-          </select>
+          <p>รายละเอียดโครงงานโดยย่อ</p>
+          <textarea id="p_des" placeholder="รายละเอียดโครงงาน..."></textarea>
+
+          {/*Teacher*/}
+          <div id="tModal" className={style.modal}>
+            <div className={style.modal_content}>
+              <div className={style.modal_header}>
+                <h2>เลือกอาจารย์</h2>
+              </div>
+              {/*-----------------------ระบบsearch(เปลี่ยนเอาแบบเทพๆ)--------------------------*/}
+              <div className={style.modal_body}>
+                <p>รหัสอาจารย์:</p>
+                <input
+                  id="searchTID"
+                  onChange={searchTeacher}
+                  placeholder="รหัสอาจารย์..."
+                ></input>
+                <p>ผลการค้นหา:</p>{" "}
+                {ShowTeacher.map((val) => {
+                  return (
+                    <p className={style.result} id={val.id}>
+                      {val.name}
+                    </p>
+                  );
+                })}
+                <p />
+                <p>เลือกสถานะอาจารย์</p>
+                <button
+                  onClick={() => updateTrole("btn_t_role1", "อาจารย์ที่ปรึกษา")}
+                  id="btn_t_role1"
+                  className={style.select}
+                >
+                  ที่ปรึกษา
+                </button>
+                <button
+                  onClick={() =>
+                    updateTrole("btn_t_role2", "อาจารย์ที่ปรึกษาร่วม")
+                  }
+                  id="btn_t_role2"
+                  className={style.select}
+                >
+                  ที่ปรึกษาร่วม
+                </button>
+                <button
+                  onClick={() => updateTrole("btn_t_role3", "กรรมการ")}
+                  id="btn_t_role3"
+                  className={style.select}
+                >
+                  กรรมการ
+                </button>
+                {/*----------------------------------------------------------------------------*/}
+                <div className={style.small_btn}>
+                  <button onClick={addTeacher}>เลือกอาจารย์</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>อาจารย์</p>
+
+          {selectdTeacher.map((val) => {
+            return (
+              <p className={style.member}>
+                รหัส: <label className={style.info}>{val.id} </label>ชื่อ:
+                <label className={style.info}> {val.name}</label>สถานะ:
+                <label className={style.info}> {val.role}</label>
+              </p>
+            );
+          })}
+          <div>
+            <button className={style.s_btn} onClick={addTeacherOn}>
+              เลือกอาจารย์
+            </button>
+          </div>
           {/*member*/}
           <div id="myModal" className={style.modal}>
             <div className={style.modal_content}>

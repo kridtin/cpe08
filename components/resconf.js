@@ -6,7 +6,7 @@ export default function resconf(props) {
   /*ต้องมีดาต้าเบส เก็บสถานะการรอการยืนยันไว้ [id,userid(รหัสนิสิต),conf(สถะนะการรอการยืนยัน int0/1)] */
   var userID = props.user.id; //user ID เอาไว้คิวรี่หา สถานะการรอการยืนยัน
   //คิวรี่มาเป็น response 0หรือ 1 เก็บไว้ในตัวแปร conf
-  var conf = 1;
+  var conf = 2;
 
   function updateState() {
     var state = props.state + 1;
@@ -25,10 +25,29 @@ export default function resconf(props) {
     var nextState = "จบ";
   }
 
-  if (conf == "0") {
+  if (conf == 0) {
     var text = "กำลังรอการยืนยัน";
     var c = "0";
     if (process.browser) {
+      if (document.getElementById("back") != null) {
+        document.getElementById("back").style.display = "none";
+      }
+      var submit = document.getElementById("submit");
+      var h = document.getElementById("head");
+      if (submit != null) {
+        submit.style.display = "none";
+        if (h != null) {
+          h.style.backgroundColor = "#f93154";
+        }
+      }
+    }
+  } else if (conf == 2) {
+    var text = "ได้รับการปฏิเสธ";
+    var c = "x";
+    if (process.browser) {
+      if (document.getElementById("back") != null) {
+        document.getElementById("back").style.display = "block";
+      }
       var submit = document.getElementById("submit");
       var h = document.getElementById("head");
       if (submit != null) {
@@ -42,6 +61,9 @@ export default function resconf(props) {
     var text = "ได้รับการยืนยันแล้ว";
     var c = "1";
     if (process.browser) {
+      if (document.getElementById("back") != null) {
+        document.getElementById("back").style.display = "none";
+      }
       var submit = document.getElementById("submit");
       var h = document.getElementById("head");
       if (submit != null) {
@@ -60,6 +82,10 @@ export default function resconf(props) {
     var modal = document.getElementById("myModal");
     modal.style.display = "none";
   }
+  function back(params) {
+    //update project state - 1
+    window.location.href = "/"; //refresh page
+  }
 
   return (
     <div className={styles.waiting}>
@@ -74,6 +100,9 @@ export default function resconf(props) {
         </p>
         <div id="submit" className={styles.submit}>
           <button onClick={modalOn}>ดำเนินการต่อ</button>
+        </div>
+        <div id="back" className={styles.submit}>
+          <button onClick={back}>ย้อนกลับ</button>
         </div>
       </div>
       <div id="myModal" className={styles.modal}>

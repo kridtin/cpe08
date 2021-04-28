@@ -1,6 +1,0 @@
-pages/login.js
-pages/index.js
-components/propose.js
-components/waiting.js
-components/RequestExam.js
-components/Testing.js

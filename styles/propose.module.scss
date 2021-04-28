@@ -12,6 +12,8 @@ $Warning: #ffa900;
 $info: #39c0ed;
 $light: #fbfbfb;
 $dark: #262626;
+$text: #5a5a5a;
+$input_text: #494949;
 
 .content {
   margin-top: 15px;
@@ -74,6 +76,17 @@ $dark: #262626;
   border-radius: 10px;
   text-indent: 2em;
   height: 50px;
+  font-size: 16px;
+}
+.p_content textarea {
+  resize: none;
+  outline: none;
+  margin-bottom: 10px;
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 10px;
+  text-indent: 2em;
+  height: 100px;
   font-size: 16px;
 }
 .p_content select {
@@ -237,7 +250,26 @@ $dark: #262626;
   font-size: 16px;
   border-radius: 10px;
 }
-
+.modal_body button.select {
+  outline: none;
+  border: solid 1px $text;
+  background-color: white;
+  text-align: center;
+  height: 40px;
+  width: 120px;
+  color: $text;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+.modal_body button.select:hover {
+  border: solid 2px $success;
+  color: $success;
+  background-color: white;
+}
 .modal_body button:hover {
   cursor: pointer;
   background-color: rgb(253, 198, 78);
